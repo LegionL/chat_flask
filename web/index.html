@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Chat</title>
+    <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdn.bootcss.com/socket.io/1.5.1/socket.io.min.js"></script>
+    <script type="text/javascript" charset="utf-8">
+    var user = {new_user: true}
+    var field = ''
+
+    $(document).ready(function() {
+        var socket = io.connect();
+
+        socket.on('connect', function() {
+            socket.emit('connect_event', user);
+        })
+
+        socket.on('server_response', function(msg) {
+            $('#log').append('<br>' + $('<div/>').text(msg['speaker'] + ': ' + msg['question']).html());
+            if ('field' in msg)
+                field = msg['field']
+        });
+
+        $('form#emit').submit(function(event) {
+            user[field] = $('#emit_ans').val()
+            socket.emit('client_event', {ans: $('#emit_ans').val(), 'field': field});
+            return false;
+        });
+    });
+    
+    </script>   
+</head>
+<body>
+    <h2>Chat Log</h2>
+    <div id='log'></div><br />
+    <form id="emit" method="POST" action='#'>
+        <input type="text" name="emit_data" id="emit_ans" value='d' placeholder="Message">
+        <input type="submit" value="Echo">
+    </form>
+    <button>done</button>
+</body>
+</html>
