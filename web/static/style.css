@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Lato:400,700);
+ 
 *, *:before, *:after {
   box-sizing: border-box;
 }
@@ -17,61 +17,19 @@ body {
   border-radius: 5px;
 }
 
-.people-list {
-  width: 260px;
-  float: left;
-}
-.people-list .search {
-  padding: 20px;
-}
-.people-list input {
-  border-radius: 3px;
-  border: none;
-  padding: 14px;
-  color: white;
-  background: #6A6C75;
-  width: 90%;
-  font-size: 14px;
-}
-.people-list .fa-search {
-  position: relative;
-  left: -25px;
-}
-.people-list ul {
-  padding: 20px;
-  height: 770px;
-}
-.people-list ul li {
-  padding-bottom: 20px;
-}
-.people-list img {
-  float: left;
-}
-.people-list .about {
-  float: left;
-  margin-top: 8px;
-}
-.people-list .about {
-  padding-left: 8px;
-}
-.people-list .status {
-  color: #92959E;
-}
-
 .chat {
-  width: 490px;
+  width: 750px;
   float: left;
   background: #F2F5F8;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
   color: #434651;
 }
 .chat .chat-header {
   padding: 20px;
   border-bottom: 2px solid white;
-}
-.chat .chat-header img {
-  float: left;
 }
 .chat .chat-header .chat-about {
   float: left;
@@ -81,9 +39,6 @@ body {
 .chat .chat-header .chat-with {
   font-weight: bold;
   font-size: 16px;
-}
-.chat .chat-header .chat-num-messages {
-  color: #92959E;
 }
 .chat .chat-header .fa-star {
   float: right;
