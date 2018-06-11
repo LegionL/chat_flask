@@ -5,10 +5,11 @@
     <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
     <script type="text/javascript" src="//cdn.bootcss.com/socket.io/1.5.1/socket.io.min.js"></script>
     <script type="text/javascript" charset="utf-8">
-    var user = {new_user: true}
-    var field = ''
+    
 
     $(document).ready(function() {
+        var user = {new_user: true}
+        var field = ''
         var socket = io.connect();
 
         socket.on('connect', function() {
@@ -19,15 +20,27 @@
             $('#log').append('<br>' + $('<div/>').text(msg['speaker'] + ': ' + msg['question']).html());
             if ('field' in msg)
                 field = msg['field']
+            if (field == 'done') {
+                $('#fb').prop('disabled', true);
+                $('#emit_ans').prop('disabled', true);
+            };
+        });
+
+        socket.on('bot_result', function(msg) {
+            $('#result').append('<br>' + $('<div/>').text(msg['ans']).html());
+            socket.disconnect()
         });
 
         $('form#emit').submit(function(event) {
             user[field] = $('#emit_ans').val()
-            socket.emit('client_event', {ans: $('#emit_ans').val(), 'field': field});
+            socket.emit('client_event', {ans: $('#emit_ans').val().trim(), 'field': field});
             return false;
         });
+
+        $('#get_result').click(function(event) {
+            socket.emit('get_result', {ans: null});
+        });
     });
-    
     </script>   
 </head>
 <body>
@@ -35,8 +48,10 @@
     <div id='log'></div><br />
     <form id="emit" method="POST" action='#'>
         <input type="text" name="emit_data" id="emit_ans" value='d' placeholder="Message">
-        <input type="submit" value="Echo">
+        <input id='fb' type="submit" value="Enter">
     </form>
-    <button>done</button>
+    <button id="get_result">done</button> 
+    <h3>Results</h3>
+    <div id='result'></div><br /> 
 </body>
 </html>
