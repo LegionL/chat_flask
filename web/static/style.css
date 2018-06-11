@@ -17,14 +17,53 @@ body {
   border-radius: 5px;
 }
 
+.people-list {
+  width: 260px;
+  float: left;
+}
+.people-list .search {
+  padding: 20px;
+}
+.people-list input {
+  border-radius: 3px;
+  border: none;
+  padding: 14px;
+  color: white;
+  background: #6A6C75;
+  width: 90%;
+  font-size: 14px;
+}
+.people-list .fa-search {
+  position: relative;
+  left: -25px;
+}
+.people-list ul {
+  padding: 20px;
+  height: 770px;
+}
+.people-list ul li {
+  padding-bottom: 20px;
+}
+.people-list img {
+  float: left;
+}
+.people-list .about {
+  float: left;
+  margin-top: 8px;
+}
+.people-list .about {
+  padding-left: 8px;
+}
+.people-list .status {
+  color: #92959E;
+}
+
 .chat {
-  width: 750px;
+  width: 490px;
   float: left;
   background: #F2F5F8;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
   color: #434651;
 }
 .chat .chat-header {
@@ -43,7 +82,9 @@ body {
   font-weight: bold;
   font-size: 16px;
 }
-
+.chat .chat-header .chat-num-messages {
+  color: #92959E;
+}
 .chat .chat-header .fa-star {
   float: right;
   color: #D8DADF;
