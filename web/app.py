@@ -31,7 +31,8 @@ def bot_ask():
     elif 'smoker' not in session:
         emit('server_response', {'question': 'Are you a smoker?', 'speaker': 'Bot', 'field': 'smoker'})
     else:
-        emit('server_response', {'question': 'Thank you. Rress "Done" for results', 'speaker': 'Bot', 'field': 'done'})
+        emit('server_response', {'question': 'Thank you. Rress "Done" for results',
+                                 'speaker': 'Bot', 'field': 'done'})
 
 
 @socketio.on('get_result')

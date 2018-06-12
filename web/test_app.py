@@ -59,7 +59,8 @@ def test_a(client):
     assert received == [{'name': 'server_response',
                          'args': [{'question': 'male', 'speaker': 'You'}], 'namespace': '/'},
                         {'name': 'server_response',
-                         'args': [{'question': 'When were you born (dd-mm-yyyy)?', 'speaker': 'Bot', 'field': 'dob'}],
+                         'args': [{'question': 'When were you born (dd-mm-yyyy)?',
+                                   'speaker': 'Bot', 'field': 'dob'}],
                          'namespace': '/'}]
 
     # repeat question if dob is illegal
@@ -68,7 +69,8 @@ def test_a(client):
     assert received == [{'name': 'server_response',
                          'args': [{'question': '11112018', 'speaker': 'You'}], 'namespace': '/'},
                         {'name': 'server_response',
-                         'args': [{'question': 'When were you born (dd-mm-yyyy)?', 'speaker': 'Bot', 'field': 'dob'}],
+                         'args': [{'question': 'When were you born (dd-mm-yyyy)?',
+                                   'speaker': 'Bot', 'field': 'dob'}],
                          'namespace': '/'}]
 
     # ask if user is smoker if dob is legal
@@ -95,7 +97,8 @@ def test_a(client):
     assert received == [{'name': 'server_response',
                          'args': [{'question': 'yes', 'speaker': 'You'}], 'namespace': '/'},
                         {'name': 'server_response',
-                         'args': [{'question': 'Thank you. Rress "Done" for results', 'speaker': 'Bot', 'field': 'done'}],
+                         'args': [{'question': 'Thank you. Rress "Done" for results',
+                                   'speaker': 'Bot', 'field': 'done'}],
                          'namespace': '/'}]
 
     # send result when your click done
