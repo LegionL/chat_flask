@@ -31,29 +31,35 @@
           };
         };
 
+        function ct() {
+            return new Date().toLocaleTimeString('en-US', { hour12: false, 
+                                                             hour: "numeric", 
+                                                             minute: "numeric"});
+        };
+
         socket.on('server_response', function(msg) {
             if (msg['speaker'] != 'You') {
                 $("#chat-history").append(`
                   <li>
                     <div class="message-data">
                       <span class="message-data-name"><i class="fa fa-circle online"></i> {0}</span>
-                      <span class="message-data-time">10:20 AM, Today</span>
+                      <span class="message-data-time">{2}</span>
                     </div>
                     <div class="message my-message">
                       {1}
                     </div>
-                  </li> `.format(msg['speaker'], msg['question']))
+                  </li> `.format(msg['speaker'], msg['question'], ct()))
             } else { 
                 $("#chat-history").append(`
                   <li class="clearfix">
                     <div class="message-data align-right">
-                      <span class="message-data-time" >10:14 AM, Today</span> &nbsp; &nbsp;
+                      <span class="message-data-time" >{2}</span> &nbsp; &nbsp;
                       <span class="message-data-name" >{0}</span> <i class="fa fa-circle me"></i>
                       
                     </div>
                     <div class="message other-message float-right">
                       {1}
-                  </div>`.format(msg['speaker'], msg['question']))
+                  </div>`.format(msg['speaker'], msg['question'], ct()))
             };
 
             if ('field' in msg)
@@ -69,12 +75,12 @@
               <li>
                 <div class="message-data">
                   <span class="message-data-name"><i class="fa fa-circle online"></i> {0}</span>
-                  <span class="message-data-time">10:20 AM, Today</span>
+                  <span class="message-data-time">{2}</span>
                 </div>
                 <div class="message my-message">
                   {1}
                 </div>
-              </li> `.format('Report', msg['ans']))
+              </li> `.format('Report', msg['ans'], ct()))
             $('#sl').stop().animate({
                 scrollTop: $('#sl')[0].scrollHeight
             }, 800);
