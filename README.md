@@ -16,5 +16,5 @@ sh lint_and_pytest.sh
 ```
 or
 ```
-lint_and_pytest.sh
+sh lint_and_pytest.sh
 ```
